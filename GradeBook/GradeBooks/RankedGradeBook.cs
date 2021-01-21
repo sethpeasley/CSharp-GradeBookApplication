@@ -30,46 +30,8 @@ namespace GradeBook.GradeBooks
             Every X students with higher grades than the input grade knocks the letter grade
             down until you reach F.
             */
-            double netAverageGrades = 0.0;
-        //     foreach (Student st in Students)
-        //     {
-        //         netAverageGrades += st.AverageGrade;
-        //     }
-
-        //     double averageTotal = netAverageGrades / Students.Count;
-        //     Console.WriteLine($"netAverageGrades: {netAverageGrades}, Students.Count: {Students.Count}, Averagetotal: {averageTotal}, averageGrade {averageGrade}");
-
-        //     if (averageTotal >= averageGrade * 0.8) { return 'A'; }
-        //     if (averageTotal >= averageGrade * 0.6) { return 'B'; }
-        //     if (averageTotal >= averageGrade * 0.4) { return 'C'; }
-        //     if (averageTotal >= averageGrade * 0.2) { return 'D'; }
-        //    // if (averageGrade >= averageGrade * 0.6) { return 'F'; }
 
             Students.Sort( (s2, s1) => s1.AverageGrade.CompareTo(s2.AverageGrade) );
-
-/*
-            Dictionary<char, int> studentDist = new Dictionary<char, int>();
-            studentDist['A'] = (int)( (Students.Count * 1.0) - (Students.Count * 0.8));
-            studentDist['B'] = (int)( (Students.Count * 0.8) - (Students.Count * 0.6));
-            studentDist['C'] = (int)( (Students.Count * 0.6) - (Students.Count * 0.4));
-            studentDist['D'] = (int)( (Students.Count * 0.4) - (Students.Count * 0.2));
-            studentDist['F'] = (int)( (Students.Count * 0.2));
-
-            
-            if ( (averageGrade <= Students[studentDist['A']-1].AverageGrade) &&  
-                 (averageGrade >  Students[studentDist['A']+studentDist['B']-1].AverageGrade)) return 'A';
-            
-            if ( (averageGrade <= Students[studentDist['A']+studentDist['B']-1].AverageGrade) &&  
-                 (averageGrade >  Students[studentDist['A']+studentDist['B']+studentDist['C']-1].AverageGrade)) 
-                 {return 'B';}
-            
-            if ( (averageGrade <= Students[studentDist['A']+studentDist['B']+studentDist['C']-1].AverageGrade) &&  
-                 (averageGrade >  Students[studentDist['A']+studentDist['B']+studentDist['C']+studentDist['D']-1].AverageGrade)) return 'C';
-            
-            if ( (averageGrade <= Students[studentDist['A']+studentDist['B']+studentDist['C']+studentDist['D']-1].AverageGrade) &&  
-                 (averageGrade >  Students[studentDist['A']+studentDist['B']+studentDist['C']+studentDist['D']+studentDist['F']-1].AverageGrade)) return 'D';
-            return 'F';
-*/
 
             int A_GradeStudents = (int)( (Students.Count * 1.0) - (Students.Count * 0.8));
             int B_GradeStudents_TopRange = (int)( (Students.Count * 0.8) - (Students.Count * 0.6)) + A_GradeStudents;
