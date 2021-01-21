@@ -292,3 +292,6 @@ __pycache__/
 
 # Visual Studio Code Settings
 .vscode/
+
+# My local CS Project files are different then the ones on the server, so I'll not commit them. 
+.csproj
