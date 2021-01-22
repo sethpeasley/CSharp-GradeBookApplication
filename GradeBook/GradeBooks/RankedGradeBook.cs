@@ -31,7 +31,9 @@ namespace GradeBook.GradeBooks
             down until you reach F.
             */
 
-            Students.Sort( (s2, s1) => s1.AverageGrade.CompareTo(s2.AverageGrade) );
+            //Students.Sort( (s2, s1) => s1.AverageGrade.CompareTo(s2.AverageGrade) );
+            var sortedStudents = Students.OrderByDescending(s => s.AverageGrade).ToList();//Select
+            //var st = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();, 
 
             int A_GradeStudents = (int)( (Students.Count * 1.0) - (Students.Count * 0.8));
             int B_GradeStudents_TopRange = (int)( (Students.Count * 0.8) - (Students.Count * 0.6)) + A_GradeStudents;
@@ -39,17 +41,17 @@ namespace GradeBook.GradeBooks
             int D_GradeStudents_TopRange = (int)( (Students.Count * 0.4) - (Students.Count * 0.2)) + C_GradeStudents_TopRange;
             int F_GradeStudents = (int)( (Students.Count * 0.2)) + D_GradeStudents_TopRange;
             
-            if ( (averageGrade <= Students[A_GradeStudents-1].AverageGrade) &&  
-                 (averageGrade >  Students[B_GradeStudents_TopRange-1].AverageGrade)) return 'A';
+            if ( (averageGrade <= sortedStudents[A_GradeStudents-1].AverageGrade) &&  
+                 (averageGrade >  sortedStudents[B_GradeStudents_TopRange-1].AverageGrade)) return 'A';
             
-            if ( (averageGrade <= Students[B_GradeStudents_TopRange-1].AverageGrade) &&  
-                 (averageGrade >  Students[C_GradeStudents_TopRange-1].AverageGrade)) return 'B';
+            if ( (averageGrade <= sortedStudents[B_GradeStudents_TopRange-1].AverageGrade) &&  
+                 (averageGrade >  sortedStudents[C_GradeStudents_TopRange-1].AverageGrade)) return 'B';
 
-            if ( (averageGrade <= Students[C_GradeStudents_TopRange-1].AverageGrade) &&  
-                 (averageGrade >  Students[D_GradeStudents_TopRange-1].AverageGrade)) return 'C';
+            if ( (averageGrade <= sortedStudents[C_GradeStudents_TopRange-1].AverageGrade) &&  
+                 (averageGrade >  sortedStudents[D_GradeStudents_TopRange-1].AverageGrade)) return 'C';
 
-            if ( (averageGrade <= Students[D_GradeStudents_TopRange-1].AverageGrade) &&  
-                 (averageGrade >  Students[F_GradeStudents-1].AverageGrade)) return 'D';
+            if ( (averageGrade <= sortedStudents[D_GradeStudents_TopRange-1].AverageGrade) &&  
+                 (averageGrade >  sortedStudents[F_GradeStudents-1].AverageGrade)) return 'D';
 
             return 'F';
         }
