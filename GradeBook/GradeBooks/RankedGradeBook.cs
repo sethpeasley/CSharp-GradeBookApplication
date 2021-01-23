@@ -13,7 +13,7 @@ namespace GradeBook.GradeBooks
     {
         private readonly int minClassSize;
 
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name, bool isWeighted) : base(name, isWeighted)
         {
             Type = GradeBookType.Ranked;
             minClassSize = 5;
